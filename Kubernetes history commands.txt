@@ -1,5 +1,5 @@
 05212020    
-1 clear
+    1 clear
     2  apt-get update && apt-get install -y apt-transport-https ca-certificates curl software-properties-common
     3  apt-get update && apt-get install -y docker.io
     4  systemctl enable docker.service
@@ -41,7 +41,7 @@
 ************************************
 05212020
 
-8  kubectl get nodes
+   18  kubectl get nodes
    19  kubectl cluster-info
    20  kubectl version
    21  kubectl version --short
