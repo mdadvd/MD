@@ -1,0 +1,115 @@
+05212020    
+1 clear
+    2  apt-get update && apt-get install -y apt-transport-https ca-certificates curl software-properties-common
+    3  apt-get update && apt-get install -y docker.io
+    4  systemctl enable docker.service
+    5  docker --version
+    6  curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+    7  cat <<EOF >/etc/apt/sources.list.d/kubernetes.list
+    8  deb https://apt.kubernetes.io/ kubernetes-xenial main
+    9  EOF
+   10  apt-get update && apt-get install -y kubelet kubeadm kubectl
+   11  systemctl daemon-reload && systemctl restart kubelet
+   12  clear
+   13  hostname -i
+   14  kubeadm init --pod-network-cidr=192.168.0.0/16 --apiserver-advertise-address=172.31.64.60
+   15  ls /etc/kubernetes/pki
+   16  ls /etc/kubernetes
+   17  kubectl "cluster-info"
+   18  mkdir -p $HOME/.kube
+   19  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+   20  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+   21  kubectl apply -f https://docs.projectcalico.org/v3.8/manifests/calico.yaml
+   22  kubectl cluster-info
+   23  kubectl get nodes
+   24  top
+   25  clear
+   26  kubectl get node
+   27  kubectl get nodes
+   28  kubectl get pods
+   29  kubectl get pod
+   30  kubectl get service
+   31  kubectl get nodes
+   32  kubectl cluster-info
+   33  clear
+   34  kubectl run my-pod --image=nginx
+   35  kubectl get pod
+   36  kubectl describe pod my-pod
+   37  kubectl get pod
+   38  kubectl get pod -o wide
+   39  history
+************************************
+05212020
+
+8  kubectl get nodes
+   19  kubectl cluster-info
+   20  kubectl version
+   21  kubectl version --short
+   22  clear
+   23  kubectl get service
+   24  kubectl describe service kubernetes
+   25  kubectl get pods
+   26  top
+   27  clear
+   28  vi pod.definition.yaml
+   29  cat pod.definition.yaml
+   30  kubectl create -f pod.definition.yaml
+   31  kubectl get pods
+   32  kubectl describe pod
+   33  kubectl get nodes
+   34  kubectl get pods
+   35  kubectl get pods --watch
+   36  kubectl get pods
+   37  kubectl get nodes
+   38  kubectl get pod -o wide
+   39  kubectl describe pod myfirst-pod
+   40  top
+   41  kubectl get nodes
+   42  kubectl get nodes -w
+   43  kubectl get nodes
+   44  clear
+   45  kubectl get pods -o wide
+   46  cat pod.definition.yaml
+   47  clear
+   48  kubectl get pods
+   49  kubectl get pods -o yaml
+   50  kubectl get pods -o json
+   51  kubectl get pods -o wide
+   52  kubectl get pods --show-labels
+   53  kubectl get pods -l app=myfirst-pod
+   54  kubectl get pods -l type=front-end
+   55  vi pod.definition.yaml
+   56  kubectl apply -f pod.definition.yaml
+   57  cat pod.definition.yaml
+   58  vi pod.definition.yaml
+   59  clear
+   60  kubectl apply -f pod.definition.yaml
+   61  kubectl get pods
+   62  kubectl describe pod myfirst-pod
+   63  vi pod.definition.yaml
+   64  clear
+   65  kubectl create -f pod.definition.yaml
+   66  kubectl apply -f pod.definition.yaml
+   67  kubectl get pods
+   68  kubectl describe pod
+   69  kubectl get pods
+   70  kubectl get pods -o wide
+   71  kubectl logs myfirst-pod
+   72  kubectl logs -p myfirst-pod -c my-container-1
+   73  kubectl get pods
+   74  vi pod.definition.yaml
+   75  kubectl apply -f pod.definition.yaml
+   76  kubectl create -f pod.definition.yaml
+   77  kubectl delete -f pod.definition.yaml
+   78  kubectl create -f pod.definition.yaml
+   79  kubectl get pods
+   80  kubectl describe pod myfirst-pod
+   81  kubectl get pods
+   82  kubectl logs -p myfirst-pod -c my-container-1 -c my-redis
+   83  kubectl logs -p myfirst-pod -c my-container-1
+   84  kubectl logs -p myfirst-pod -c my-redis
+   85  clear
+   86  kubectl get events
+   87  clear
+   88  cat pod.definition.yaml
+   89  history
